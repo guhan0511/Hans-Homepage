@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>近期阅读 | Hans</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        secondary: '#333333',
+                        accent: '#0066ff',
+                        light: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar-fixed bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">Hans</a>
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回首页
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 内容区域 -->
+    <section class="py-24 pt-32">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- 标题 -->
+                <div class="mb-12 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-2">近期阅读</h1>
+                    <p class="text-xl text-gray-600">Recent Reading</p>
+                </div>
+                
+                <!-- 主图 -->
+                <div class="mb-12">
+                    <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&h=675&fit=crop" alt="Recent Reading" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- 内容 -->
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        阅读是我获取知识、拓展思维和放松身心的重要方式。近期我阅读了一些关于职业发展、技术创新和人文素养的书籍，从中获得了很多启发和感悟。以下是我的近期阅读分享。
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&h=600&fit=crop" alt="Bookshelf" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1541961017774-22349e411744?w=600&h=600&fit=crop" alt="Reading" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold mb-4">1. 《原则》(Principles) - Ray Dalio</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        这本书是桥水基金创始人瑞·达利欧的人生和工作原则总结。书中分享了他在个人生活和职业发展中的经验教训，以及他建立的一套基于原则的决策系统。这本书让我深刻认识到，建立清晰的原则并严格遵守，是取得成功的重要保障。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">2. 《AI超级powers》(AI Superpowers) - Kai-Fu Lee</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        李开复博士在这本书中探讨了人工智能的发展趋势和对社会的影响。他分析了中美两国在AI领域的竞争与合作，以及AI将如何改变就业市场和经济结构。这本书让我对AI技术的未来发展有了更全面的认识，也让我思考如何在AI时代保持竞争力。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">3. 《人类简史》(Sapiens: A Brief History of Humankind) - Yuval Noah Harari</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        这本书从宏观角度讲述了人类从认知革命到科技革命的发展历程。作者提出了许多独到的见解，探讨了人类如何从一个普通的物种发展成为地球的主宰。这本书开阔了我的视野，让我从更长远的角度思考人类的未来和个人的价值。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">4. 《高效能人士的七个习惯》(The 7 Habits of Highly Effective People) - Stephen R. Covey</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        这是一本经典的自我管理书籍，介绍了七个有助于个人成长和高效工作的习惯。书中强调了从依赖到独立，再到互赖的成长过程，以及以终为始、要事第一等重要原则。这本书让我重新审视了自己的工作和生活方式，帮助我建立了更有效的习惯。
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-semibold mb-3">阅读感悟</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            阅读不仅是获取知识的过程，更是思考和成长的过程。通过阅读，我能够站在巨人的肩膀上，看到更广阔的世界和更深刻的道理。我认为，保持持续阅读的习惯，是个人成长和职业发展的重要基石。
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mt-4">
+                            我建议每个人都应该根据自己的兴趣和需求，建立一个个性化的阅读清单，并坚持定期阅读。无论是专业书籍还是人文书籍，都能为我们的生活和工作带来启发和帮助。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 返回链接 -->
+                <div class="mt-12 text-center">
+                    <a href="../index.html#reading" class="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                        <i class="fa fa-arrow-left mr-2"></i> 返回近期阅读
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-black text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 Hans. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

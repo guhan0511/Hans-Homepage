@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的职业观 | Hans</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        secondary: '#333333',
+                        accent: '#0066ff',
+                        light: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar-fixed bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">Hans</a>
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回首页
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 内容区域 -->
+    <section class="py-24 pt-32">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- 标题 -->
+                <div class="mb-12 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-2">我的职业观</h1>
+                    <p class="text-xl text-gray-600">My Career Philosophy</p>
+                </div>
+                
+                <!-- 主图 -->
+                <div class="mb-12">
+                    <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=675&fit=crop" alt="Career Philosophy" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- 内容 -->
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        职业观是一个人对职业的根本看法和态度，它决定了我们在职业生涯中的选择、行为和发展方向。以下是我对职业发展的一些核心观点和理念。
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=600&fit=crop" alt="Professional Growth" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=600&fit=crop" alt="Work Ethics" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold mb-4">1. 持续学习与成长</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        在快速变化的时代，持续学习是职业发展的基石。我坚信，无论在什么阶段，都应该保持学习的热情和好奇心，不断更新知识和技能，适应行业的发展和变化。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">2. 以价值为导向</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        我认为，职业的价值在于为他人和社会创造价值。无论是在什么岗位，都应该关注如何为客户、团队和组织带来实际的价值，而不仅仅是完成任务。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">3. 拥抱变化与挑战</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        变化是唯一不变的。我积极拥抱变化，将挑战视为成长的机会。面对新的环境和任务，我会保持开放的心态，勇于尝试和创新。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">4. 团队合作与沟通</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        现代职场中，团队合作至关重要。我注重建立良好的人际关系，善于沟通和协作，相信团队的力量大于个人。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-4">5. 工作与生活的平衡</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        我认为，良好的工作生活平衡是长期职业发展的保障。只有在生活中保持身心健康和幸福感，才能在工作中发挥出最佳状态。
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-semibold mb-3">职业发展建议</h3>
+                        <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
+                            <li>设定明确的职业目标，并制定可行的发展计划</li>
+                            <li>主动寻求反馈和指导，不断改进自己</li>
+                            <li>建立专业网络，拓展人脉资源</li>
+                            <li>保持乐观的心态，面对困难不轻易放弃</li>
+                            <li>关注行业趋势，提前做好准备</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 返回链接 -->
+                <div class="mt-12 text-center">
+                    <a href="../index.html#career" class="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                        <i class="fa fa-arrow-left mr-2"></i> 返回我的职业观
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-black text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 Hans. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
