@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两届奥运参与者 | Hans</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        secondary: '#333333',
+                        accent: '#0066ff',
+                        light: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar-fixed bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">Hans</a>
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回首页
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 内容区域 -->
+    <section class="py-24 pt-32">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- 标题 -->
+                <div class="mb-12 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-2">两届奥运参与者</h1>
+                    <p class="text-xl text-gray-600">Two-time Olympic Participant</p>
+                    <div class="mt-4 text-gray-500">
+                        <i class="fa fa-calendar mr-2"></i> 2024
+                    </div>
+                </div>
+                
+                <!-- 主图 -->
+                <div class="mb-12">
+                    <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200&h=675&fit=crop" alt="Olympic Games" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- 内容 -->
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        作为两届奥运会的参与者，我有幸见证了世界顶级体育赛事的魅力与精彩。从巴黎到洛杉矶，从观众到工作人员，每一次参与都让我对奥林匹克精神有了更深刻的理解。
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&h=600&fit=crop" alt="Olympic Stadium" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=600&fit=crop" alt="Olympic Athletes" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold mb-4">我的奥运之旅</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        第一次参与奥运会是在2024年巴黎奥运会，我作为广播服务团队的一员，负责视频日志记录工作。这让我有机会近距离接触到世界顶级的运动员和赛事组织团队，深刻体会到了奥运会背后的辛勤付出和团队合作精神。
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        第二次参与奥运会是在2028年洛杉矶奥运会，我作为项目管理团队的一员，负责协调各个部门之间的工作。这次经历让我对大型国际赛事的运作有了更全面的了解，也锻炼了我的领导力和沟通能力。
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-semibold mb-3">奥林匹克精神的感悟</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            参与奥运会让我深刻理解了"更快、更高、更强——更团结"的奥林匹克精神。这种精神不仅体现在体育竞技中，也体现在日常生活和工作中。它激励着我不断追求卓越，勇于挑战自我，同时注重团队合作。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 返回链接 -->
+                <div class="mt-12 text-center">
+                    <a href="../index.html#milestones" class="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                        <i class="fa fa-arrow-left mr-2"></i> 返回高光时刻
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-black text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 Hans. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

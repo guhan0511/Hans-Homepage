@@ -1,0 +1,625 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页| Hans</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- GSAP 动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        secondary: '#333333',
+                        accent: '#0066ff',
+                        light: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    transitionProperty: {
+                        'height': 'height',
+                        'spacing': 'margin, padding',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-balance {
+                text-wrap: balance;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+            .hover-scale {
+                @apply hover:scale-105 transition-transform duration-300;
+            }
+            .card-shadow {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .nav-shadow {
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+    
+    <style>
+        /* 自定义滚动区域的自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* 平滑区域的动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 作品卡片悬停效果 */
+        .work-card {
+            transition: all 0.3s ease;
+        }
+        
+        .work-card:hover .work-overlay {
+            opacity: 1;
+        }
+        
+        .work-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* 导航栏滚动效果 */
+        .navbar-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar-fixed bg-white bg-opacity-95 nav-shadow py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between-between items-center">
+                <a href="#" class="text-2xl font-bold text-primary">Hans</a>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex ml-auto space-x-8">
+                    <a href="#home" class="text-secondary hover:text-accent transition-colors">Home</a>
+                    <a href="#works" class="text-secondary hover:text-accent transition-colors">Portfolio</a>
+                    <a href="#about" class="text-secondary hover:text-accent transition-colors">About</a>
+                    <a href="#contact" class="text-secondary hover:text-accent transition-colors">Contact</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden ml-auto text-primary focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden bg-white hidden absolute top-full left-0 w-full border-t border-gray-100">
+            <div class="container mx-auto px-4 py-4">
+                <a href="#home" class="block py-2 text-secondary hover:text-accent">Home</a>
+                <a href="#works" class="block py-2 text-secondaryary hover:text-accent">Portfolio</a>
+                <a href="#about" class="block py-2 text-secondaryary hover:text-accent">About</a>
+                <a href="#contact" class="block py-2 text-secondary hover:text-accent">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-16">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- 左侧文字内容 -->
+                <div class="max-w-3xl md:w-1/2">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight" style="font-size: 96px;">Bonjour, I'm Hans  👋</h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-8" style="font-size: 18px; line-height: 27px; color: rgb(33, 35, 38);">
+                        A versatile professional with expertise in travel planning, project management, and international broadcasting.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#works" class="flex-1 text-center px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-800 transition duration-300">
+                            Portfolio
+                        </a>
+                        <a href="#milestones" class="flex-1 text-center px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                            Highlights
+                        </a>
+                        <a href="#about" class="flex-1 text-center px-6 py-3 border border-gray-300 text-black font-medium rounded-md hover:bg-gray-100 transition duration-300">
+                            About Me
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 右侧图片 -->
+                <div class="md:w-2/5 relative">
+                    <div class="aspect-[3/4] rounded-lg overflow-hidden">
+                        <img src="images/daily_profile.jpeg" alt="Hans - Designer" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示区 -->
+    <section id="works" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">我的作品集</h2>
+            <h3 class="text-xl md:text-2xl font-semibold mb-16 text-center text-gray-600">Portfolio</h3>
+            
+            <!-- 作品集网格 -->
+            <div class="grid grid-cols-1 gap-12 max-w-4xl mx-auto">
+                <!-- Vibe Coding作品集 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-1">Vibe Coding作品集</h3>
+                        <p class="text-lg font-medium text-gray-600 mb-6">Vibe Coding Portfolio</p>
+                        <p class="text-gray-600 mb-6">探索设计与技术融合的数字体验，展示我在UI/UX设计和前端开发领域的创新实践。</p>
+                        
+                        <!-- 作品集内容 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="group relative overflow-hidden rounded-lg h-48 bg-gray-100">
+                                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/29449b1a007b4221921bce21be1e4dd2~tplv-a9rns2rl98-image.image?rcl=20251013163918FB6EAC6B654496E25F85&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1760949563&amp;x-signature=B6ka6pttP6CFMPh%2FXj8k6xP63i4%3D" alt="Mobile App UI Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <span class="px-4 py-2 bg-white text-black text-sm font-medium rounded-md">View Details</span>
+                                </div>
+                            </div>
+                            <div class="group relative overflow-hidden rounded-lg h-48 bg-gray-100">
+                                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/520c2cb70ce74a5e873ecc213be07d49~tplv-a9rns2rl98-image.image?rcl=20251013162436B2ED504F4E124AF921CD&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1760948681&amp;x-signature=mHPZrZeJjztdaF94jLEBa09ZNyE%3D" alt="Modern Website Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <span class="px-4 py-2 bg-white text-black text-sm font-medium rounded-md">View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-block mt-6 px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                            View Full Portfolio
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 摄影作品集 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-1">摄影作品集</h3>
+                        <p class="text-lg font-medium text-gray-600 mb-6">Photography Portfolio</p>
+                        <p class="text-gray-600 mb-6">通过镜头捕捉自然之美与人文故事，展现我对光影、构图和情感表达的独特理解。</p>
+                        
+                        <!-- 摄影作品子集 -->
+                        <div class="space-y-8">
+                            <!-- 风光摄影集 -->
+                            <div>
+                                <h4 class="text-xl font-medium mb-1">风光摄影集</h4>
+                                <p class="text-md text-gray-600 mb-4">Landscape Photography</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="group relative overflow-hidden rounded-lg h-40 bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=300&fit=crop" alt="Mountain Landscape" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    </div>
+                                    <div class="group relative overflow-hidden rounded-lg h-40 bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&h=300&fit=crop" alt="Beach Sunset" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    </div>
+                                </div>
+                                <a href="#" class="inline-block mt-4 px-4 py-2 text-accent font-medium hover:underline">
+                                    View More Landscape Works
+                                </a>
+                            </div>
+                            
+                            <!-- 人文摄影集 -->
+                            <div>
+                                <h4 class="text-xl font-medium mb-1">人文摄影集</h4>
+                                <p class="text-md text-gray-600 mb-4">Street & Documentary Photography</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="group relative overflow-hidden rounded-lg h-40 bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1499561343534-2303514362f8?w=600&h=300&fit=crop" alt="Street Photography" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    </div>
+                                    <div class="group relative overflow-hidden rounded-lg h-40 bg-gray-100">
+                                        <img src="https://images.unsplash.com/photo-1509005166405-021faa053b64?w=600&h=300&fit=crop" alt="Cultural Event" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    </div>
+                                </div>
+                                <a href="#" class="inline-block mt-4 px-4 py-2 text-accent font-medium hover:underline">
+                                    View More Street Works
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-block mt-8 px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                            View Full Photography Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 高光时刻模块 -->
+    <section id="milestones" class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-1">我的高光时刻</h2>
+                    <p class="text-xl font-semibold mb-6 text-gray-600">Highlights</p>
+                    <p class="text-gray-600 mb-6">Celebrating key achievements and moments in my professional journey. Explore the highlights of my career and growth.</p>
+                    <a href="#milestones" class="inline-flex items-center text-accent font-medium hover:underline">
+                        View All Highlights
+                        <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full md:w-auto">
+                    <!-- 里程碑卡片1 -->
+                    <a href="highlights/olympics.html" class="block bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl font-bold text-accent mb-2">2024</div>
+                        <h3 class="font-semibold mb-1">两届奥运参与者</h3>
+                        <p class="text-sm text-gray-500">Beijing 2022 &Paris 2024 Olympic Participant</p>
+                    </a>
+                    <!-- 里程碑卡片2 -->
+                    <a href="highlights/europe.html" class="block bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl font-bold text-accent mb-2">2023</div>
+                        <h3 class="font-semibold mb-1">最美的年纪在欧洲游学记</h3>
+                        <p class="text-sm text-gray-500">Études en Europe à l'âge le plus beau</p>
+                    </a>
+                    <!-- 里程碑卡片3 -->
+                    <a href="highlights/ai-entrepreneurs.html" class="block bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <div class="text-3xl font-bold text-accent mb-2">2022</div>
+                        <h3 class="font-semibold mb-1">与前沿AI创业者的互动</h3>
+                        <p class="text-sm text-gray-500">Interaction with AI Entrepreneurs</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我区域 -->
+    <section id="about" class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-top gap-12">
+                <div class="md:w-1/3">
+                    <div class="relative">
+                        <img src="images/professional_profile.jpg" alt="Hans" class="w-full rounded-lg relative z-10">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        I'm a versatile professional with experience in travel planning, project management, and international broadcasting. My background spans across multiple industries, allowing me to bring a unique perspective to every challenge.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        With a strong foundation in business analysis, data visualization, and cross-cultural communication, I excel at creating efficient workflows and delivering impactful results in diverse environments.
+                    </p>
+                    
+                    <!-- 技能 -->
+                    <div class="mb-12">
+                        <h3 class="text-xl font-semibold mb-4">Skills</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Customer Relationship Management</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Travel Planning</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Workflow Management</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Deal sourcing</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Data Analysis</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Data Visualization</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Broadcasting</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Intercultural Communication</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Negotiation</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Omni-Channel Marketing</span>
+                            <span class="px-4 py-2 bg-gray-100 rounded-full text-sm">Business Analysis</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 经验和教育 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- 经验 -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Experience</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="font-medium">Project Intern</h4>
+                                    <p class="text-gray-600 text-sm">Europa Holiday Travel Agency</p>
+                                    <p class="text-gray-500 text-xs" style="font-size: 14px; line-height: 36px; color: rgb(141, 145, 153);">2025.03-2025.10 | Beijing, China</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Managing Director</h4>
+                                    <p class="text-gray-600 text-sm">MiraclePlus</p>
+                                    <p class="text-gray-500 text-xs" style="font-size: 14px; line-height: 36px; color: rgb(141, 145, 153);">2025.02-2025.05 | Beijing, China</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Video Logger Intern</h4>
+                                    <p class="text-gray-600 text-sm">Olympic Broadcasting Services</p>
+                                    <p class="text-gray-500 text-xs" style="font-size: 14px; line-height: 36px; color: rgb(141, 145, 153);">2024.06-2024.08 | Paris, France</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 教育 -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Education</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="font-medium">Master of Economics</h4>
+                                    <p class="text-gray-600 text-sm">Beijing International Studies University</p>
+                                    <p class="text-gray-500 text-xs" style="font-size: 14px; line-height: 36px; color: rgb(141, 145, 153);">2023 - 2026</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Grande École (Exchange)</h4>
+                                    <p class="text-gray-600 text-sm">Essec Business School</p>
+                                    <p class="text-gray-500 text-xs" style="font-size: 14px; line-height: 36px; color: rgb(141, 145, 153);">2024</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Bachelor of Economics</h4>
+                                    <p class="text-gray-600 text-sm">Beijing International Studies University</p>
+                                    <p class="text-gray-500 text-xs" style="font-size: 14px; line-height: 36px; color: rgb(141, 145, 153);">2019 - 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式区域 -->
+    <section id="contact" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">Get In Touch</h2>
+            <div class="flex flex-col items-center justify-center">                
+                <!-- 联系渠道 -->
+                <div class="bg-white p-12 rounded-lg shadow-sm max-w-2xl w-full">
+                    <h3 class="text-2xl font-semibold mb-8 text-center">Contact Channels</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- 微信联系方式 -->
+                        <div class="flex items-center justify-between gap-6 p-6 bg-blue-50 rounded-lg">
+                            <div class="flex items-center gap-6">
+                                <div class="text-4xl text-green-600">
+                                    <i class="fa fa-weixin"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">WeChat</h4>
+                                    <p class="text-gray-600">Scan the QR code or add directly</p>
+                                    <p class="text-lg font-medium mt-2">g22067101</p>
+                                </div>
+                            </div>
+                            <!-- 二维码位置 -->
+                            <div class="w-24 h-24 bg-white rounded-lg flex items-center justify-center border border-gray-200">
+                                <i class="fa fa-qrcode text-4xl text-gray-400"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- 邮箱联系方式 -->
+                        <div class="flex items-center gap-6 p-6 bg-blue-50 rounded-lg">
+                            <div class="text-4xl text-blue-600">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Email</h4>
+                                <p class="text-gray-600">Feel free to send me an email</p>
+                                <a href="mailto:Gu_Han2026@outlook.com" class="text-lg font-medium text-accent hover:underline mt-2 block">Gu_Han2026@outlook.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-12 bg-black text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold">Hans</h3>
+                    <p class="text-gray-400 mt-2">A versatile professional in travel, project management, and broadcasting.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fa fa-behance text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fa fa-dribbble text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fa fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fa fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2025 Hans. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-black text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 关闭移动菜单（如果打开）
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // 考虑导航栏高度
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 导航栏滚动效果
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white', 'shadow-md');
+                    navbar.classList.remove('bg-opacity-95');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.add('bg-opacity-95');
+                }
+            });
+            
+            // 回到顶部按钮
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 滚动动画
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+            
+            // 初始检查
+            fadeInOnScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // 使用 GSAP 添加更复杂的动画
+            if (typeof gsap !== 'undefined') {
+                // Hero 区域动画
+                gsap.from('#home h1', {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    delay: 0.2
+                });
+                
+                gsap.from('#home p', {
+                    opacity: 0,
+                    y: 30,
+                    duration: 1,
+                    delay: 0.5
+                });
+                
+                gsap.from('#home .flex', {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1,
+                    delay: 0.8
+                });
+                
+                // 作品卡片动画
+                gsap.utils.toArray('.work-card').forEach((card, i) => {
+                    gsap.from(card, {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top bottom-=100',
+                            toggleActions: 'play none none none'
+                        },
+                        opacity: 0,
+                        y: 50,
+                        duration: 0.8,
+                        delay: i * 0.1
+                    });
+                });
+            }
+            
+            // 表单提交处理
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 获取表单数据
+                    const formData = new FormData(contactForm);
+                    const formDataObject = {};
+                    
+                    formData.forEach((value, key) => {
+                        formDataObject[key] = value;
+                    });
+                    
+                    // 在实际应用中，这里会发送数据到服务器
+                    // 这里仅做演示，显示提交成功消息
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+
+
+</body></html>

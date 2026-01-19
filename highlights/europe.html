@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最美的年纪在欧洲游学记 | Hans</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        secondary: '#333333',
+                        accent: '#0066ff',
+                        light: '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-white text-primary font-sans">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar-fixed bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-primary">Hans</a>
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                    <i class="fa fa-arrow-left mr-2"></i> 返回首页
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 内容区域 -->
+    <section class="py-24 pt-32">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- 标题 -->
+                <div class="mb-12 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-2">最美的年纪在欧洲游学记</h1>
+                    <p class="text-xl text-gray-600">Études en Europe à l'âge le plus beau</p>
+                    <div class="mt-4 text-gray-500">
+                        <i class="fa fa-calendar mr-2"></i> 2023
+                    </div>
+                </div>
+                
+                <!-- 主图 -->
+                <div class="mb-12">
+                    <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&h=675&fit=crop" alt="Europe Study Abroad" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- 内容 -->
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        在人生最美的年纪，我有幸前往欧洲进行游学。这段经历不仅让我开阔了眼界，增长了见识，也让我对不同文化有了更深刻的理解和 appreciation。
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop" alt="European Architecture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop" alt="European Culture" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold mb-4">游学经历</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        我的欧洲游学之旅始于法国巴黎，在那里我学习了法语和法国文化。巴黎这座浪漫之都给我留下了深刻的印象，从埃菲尔铁塔到卢浮宫，从香榭丽舍大街到塞纳河，每一处都充满了艺术和历史的气息。
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        随后我前往了瑞士，欣赏了阿尔卑斯山的壮丽景色，体验了瑞士的精密制造和高品质生活。接着我又访问了意大利，领略了古罗马文明的辉煌和文艺复兴的艺术魅力。
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        最后我来到了西班牙，感受了弗拉门戈舞蹈的热情和巴塞罗那的现代主义建筑。这段游学经历让我对欧洲的历史、文化、艺术和生活方式有了全面的了解。
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-semibold mb-3">游学感悟</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            欧洲游学让我明白，世界是如此的多元和精彩。不同的国家和文化有着各自独特的魅力，我们应该以开放的心态去学习和欣赏。这段经历也让我变得更加独立和自信，学会了如何在陌生的环境中适应和成长。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 返回链接 -->
+                <div class="mt-12 text-center">
+                    <a href="../index.html#milestones" class="inline-flex items-center px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-blue-700 transition duration-300">
+                        <i class="fa fa-arrow-left mr-2"></i> 返回高光时刻
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-black text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 Hans. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
